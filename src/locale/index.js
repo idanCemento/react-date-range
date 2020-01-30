@@ -34,3 +34,4 @@ export { default as ua } from './ua.js';
 export { default as vi } from './vi.js';
 export { default as zhCN } from './zh-CN.js';
 export { default as zhTW } from './zh-TW.js';
+export { default as he } from './he.js';
