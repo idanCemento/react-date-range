@@ -288,7 +288,7 @@ var _he = require('./he.js');
 Object.defineProperty(exports, 'he', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(he).default;
+    return _interopRequireDefault(_he).default;
   }
 });
 
