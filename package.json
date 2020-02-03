@@ -4,7 +4,6 @@
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
-    "postinstall": "cd node_modules/react-date-range && yarn install",
     "dev": "NODE_ENV=development & webpack-dev-server --hot --inline",
     "clear": "rm -rf dist/* & rm -rf demo/dist/*",
     "build": "NODE_ENV=production & yarn build-library & yarn build-demo",
