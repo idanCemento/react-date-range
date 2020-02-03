@@ -77,3 +77,13 @@ export function generateStyles(sources) {
     }, {});
   return generatedStyles;
 }
+
+export function getMonths(locale = {}) {
+  let months = [];
+  if (locale.localize && locale.localize.month) {
+    for (let i = 0; i < 12; i++) {
+      months.push(locale.localize.month(i));
+    }
+  }
+  return months;
+}

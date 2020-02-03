@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.1",
-    "date-fns": "github:idanCemento/date-fns#e625b58becb87023a293bb6763d2a6b761f06035",
+    "date-fns": "^2.9.0",
     "prop-types": "^15.5.10",
     "react-list": "^0.8.8"
   },

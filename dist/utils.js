@@ -1,7 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
 exports.calcFocusDate = calcFocusDate;
 exports.findNextRangeIndex = findNextRangeIndex;
@@ -36,15 +36,17 @@ var _addMonths = require('date-fns/addMonths');
 
 var _addMonths2 = _interopRequireDefault(_addMonths);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 function calcFocusDate(currentFocusedDate, props) {
   var shownDate = props.shownDate,
-      date = props.date,
-      months = props.months,
-      ranges = props.ranges,
-      focusedRange = props.focusedRange,
-      displayMode = props.displayMode;
+    date = props.date,
+    months = props.months,
+    ranges = props.ranges,
+    focusedRange = props.focusedRange,
+    displayMode = props.displayMode;
   // find primary date according the props
 
   var targetInterval = void 0;
@@ -52,12 +54,12 @@ function calcFocusDate(currentFocusedDate, props) {
     var range = ranges[focusedRange[0]] || {};
     targetInterval = {
       start: range.startDate,
-      end: range.endDate
+      end: range.endDate,
     };
   } else {
     targetInterval = {
       start: date,
-      end: date
+      end: date,
     };
   }
   targetInterval.start = (0, _startOfMonth2.default)(targetInterval.start || new Date());
@@ -71,7 +73,7 @@ function calcFocusDate(currentFocusedDate, props) {
   // if (props.scroll.enabled) return targetDate;
   var currentFocusInterval = {
     start: (0, _startOfMonth2.default)(currentFocusedDate),
-    end: (0, _endOfMonth2.default)((0, _addMonths2.default)(currentFocusedDate, months - 1))
+    end: (0, _endOfMonth2.default)((0, _addMonths2.default)(currentFocusedDate, months - 1)),
   };
   if ((0, _areIntervalsOverlapping2.default)(targetInterval, currentFocusInterval)) {
     // don't change focused if new selection in view area
@@ -83,11 +85,11 @@ function calcFocusDate(currentFocusedDate, props) {
 function findNextRangeIndex(ranges) {
   var currentRangeIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
 
-  var nextIndex = ranges.findIndex(function (range, i) {
+  var nextIndex = ranges.findIndex(function(range, i) {
     return i > currentRangeIndex && range.autoFocus !== false && !range.disabled;
   });
   if (nextIndex !== -1) return nextIndex;
-  return ranges.findIndex(function (range) {
+  return ranges.findIndex(function(range) {
     return range.autoFocus !== false && !range.disabled;
   });
 }
@@ -101,19 +103,31 @@ function getMonthDisplayRange(date, dateOptions) {
     start: startDateOfCalendar,
     end: endDateOfCalendar,
     startDateOfMonth: startDateOfMonth,
-    endDateOfMonth: endDateOfMonth
+    endDateOfMonth: endDateOfMonth,
   };
 }
 
 function generateStyles(sources) {
   if (!sources.length) return {};
-  var generatedStyles = sources.filter(function (source) {
-    return Boolean(source);
-  }).reduce(function (styles, styleSource) {
-    Object.keys(styleSource).forEach(function (key) {
-      styles[key] = (0, _classnames2.default)(styles[key], styleSource[key]);
-    });
-    return styles;
-  }, {});
+  var generatedStyles = sources
+    .filter(function(source) {
+      return Boolean(source);
+    })
+    .reduce(function(styles, styleSource) {
+      Object.keys(styleSource).forEach(function(key) {
+        styles[key] = (0, _classnames2.default)(styles[key], styleSource[key]);
+      });
+      return styles;
+    }, {});
   return generatedStyles;
+}
+
+export function getMonths(locale = {}) {
+  let months = [];
+  if (locale.localize && locale.localize.month) {
+    for (let i = 0; i < 12; i++) {
+      months.push(locale.localize.month(i));
+    }
+  }
+  return months;
 }

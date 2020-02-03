@@ -26,6 +26,7 @@ import {
 } from 'date-fns';
 import defaultLocale from 'date-fns/locale/en-US';
 import coreStyles from '../styles';
+import { getMonths } from '../utils';
 
 class Calendar extends PureComponent {
   constructor(props, context) {
@@ -181,7 +182,7 @@ class Calendar extends PureComponent {
               <select
                 value={focusedDate.getMonth()}
                 onChange={e => changeShownDate(e.target.value, 'setMonth')}>
-                {locale.localize.months().map((month, i) => (
+                {getMonths(locale).map((month, i) => (
                   <option key={i} value={i}>
                     {month}
                   </option>
@@ -208,7 +209,7 @@ class Calendar extends PureComponent {
           </span>
         ) : (
           <span className={styles.monthAndYearPickers}>
-            {locale.localize.months()[focusedDate.getMonth()]} {focusedDate.getFullYear()}
+            {getMonths(locale)[focusedDate.getMonth()]} {focusedDate.getFullYear()}
           </span>
         )}
         {showMonthArrow ? (
