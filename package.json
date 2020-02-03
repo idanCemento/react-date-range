@@ -4,6 +4,7 @@
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
+    "postinstall": "cd node_modules/react-date-range && npm install",
     "dev": "NODE_ENV=development & webpack-dev-server --hot --inline",
     "clear": "rm -rf dist/* & rm -rf demo/dist/*",
     "build": "NODE_ENV=production & yarn build-library & yarn build-demo",
@@ -35,7 +36,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.1",
-    "date-fns": "github:idanCemento/date-fns#alpha7-he",
+    "date-fns": "github:idanCemento/date-fns#7d2cbfedcd0eb03abcccb08b80452a4473cfec25",
     "prop-types": "^15.5.10",
     "react-list": "^0.8.8"
   },
